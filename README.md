@@ -1,15 +1,15 @@
-# Webpack library starter
+# Webpack library starter with Jest
 
-Webpack based boilerplate for producing libraries (Input: ES6, Output: universal library)
+Webpack based boilerplate for producing libraries (Input: ES6, Output: universal library), this is a library cloned from [webpack-library-starter](https://github.com/krasimir/webpack-library-starter/) with mocha/chai replaced with jest and with a webpack-dev-server for rapid iteration added.
 
-![Travis](https://travis-ci.org/krasimir/webpack-library-starter.svg?branch=master)
+![Travis](https://travis-ci.org/rolilink/webpack-library-starter-jest.svg?branch=master)
 
 ## Features
 
 * Webpack 4 based.
 * ES6 as a source.
 * Exports in a [umd](https://github.com/umdjs/umd) format so your library works everywhere.
-* ES6 test setup with [Mocha](http://mochajs.org/) and [Chai](http://chaijs.com/).
+* ES6 test setup with [Jest](https://jestjs.io/).
 * Linting with [ESLint](http://eslint.org/).
 
 ## Process
@@ -32,13 +32,14 @@ ES6 source files
 ## Getting started
 
 1. Setting up the name of your library
-  * Open `webpack.config.js` file and change the value of `libraryName` variable.
+  * Open `package.json` file and change the value of `name` variable.
   * Open `package.json` file and change the value of `main` property so it matches the name of your library.
 2. Build your library
   * Run `yarn install` (recommended) or `npm install` to get the project's dependencies
   * Run `yarn build` or `npm run build` to produce minified version of your library.
 3. Development mode
   * Having all the dependencies installed run `yarn dev` or `npm run dev`. This command will generate an non-minified version of your library and will run a watcher so you get the compilation on file change.
+  * Having all the dependencies installed run `yarn dev-server` or `npm run dev-server`. This command will generate an non-minified version of your library and will run webpack dev server an expose the library at `window.<name_of_the_package>`.
 4. Running the tests
   * Run `yarn test` or `npm run test`
 
@@ -83,3 +84,5 @@ In the following example we are excluding React and Lodash:
   }
 }
 ```
+## Known Issues 
+Still have some issues with coverage

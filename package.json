@@ -1,19 +1,21 @@
 {
-  "name": "webpack-library-starter",
-  "version": "1.0.2",
-  "description": "Produce universal library with webpack and es6",
-  "main": "lib/webpack-library-starter.js",
+  "name": "webpack-library-starter-jest",
+  "version": "1.0.0",
+  "description": "Produce universal library with webpack and es6, cloned from https://github.com/krasimir/webpack-library-starter/ added jest support and webpack-dev-server support.",
+  "main": "lib/webpack-library-starter-jest.js",
   "scripts": {
     "build": "webpack --env dev && webpack --env build && npm run test",
     "dev": "webpack --progress --colors --watch --env dev",
-    "test": "mocha --require babel-register --colors ./test/*.spec.js",
-    "test:watch": "mocha --require babel-register --colors -w ./test/*.spec.js",
-    "test:cover": "cross-env NODE_ENV=test nyc mocha --require babel-register --colors test/*.js",
-    "repl": "node -i -e \"$(< ./lib/webpack-library-starter.js)\""
+    "test": "node node_modules/.bin/jest",
+    "test:debug": "node --inspect node_modules/.bin/jest --runInBand -v false",
+    "test:watch": "node node_modules/.bin/jest --watch",
+    "test:cover": "node node_modules/.bin/jest --coverage",
+    "repl": "node -i -e \"$(< ./lib/webpack-library-starter-jest.js)\"",
+    "dev-server": "webpack-dev-server --config ./webpack-dev-server.config.js --mode development"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/krasimir/webpack-library-starter.git"
+    "url": "https://github.com/rolilink/webpack-library-starter.git"
   },
   "keywords": [
     "webpack",
@@ -22,19 +24,20 @@
     "library",
     "universal",
     "umd",
-    "commonjs"
+    "commonjs",
+    "jest"
   ],
-  "author": "Krasimir Tsonev",
+  "author": "Rolando Perez",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/krasimir/webpack-library-starter/issues"
+    "url": "https://github.com/rolilink/webpack-library-starter/issues"
   },
-  "homepage": "https://github.com/krasimir/webpack-library-starter",
+  "homepage": "https://github.com/rolilink/webpack-library-starter",
   "devDependencies": {
     "@babel/cli": "^7.0.0-beta.51",
     "@babel/core": "^7.0.0-beta.51",
     "@babel/preset-env": "^7.0.0-beta.51",
-    "babel-eslint": "^8.0.3",
+    "babel-eslint": "^10.0.1",
     "babel-loader": "^8.0.0-beta.4",
     "babel-plugin-add-module-exports": "^0.2.1",
     "babel-plugin-istanbul": "^5.1.0",
@@ -44,17 +47,21 @@
     "cross-env": "^5.2.0",
     "eslint": "^5.0.1",
     "eslint-loader": "^2.0.0",
+    "html-loader": "^0.5.5",
+    "html-webpack-plugin": "^3.2.0",
+    "jest": "^24.8.0",
     "jsdom": "11.11.0",
     "jsdom-global": "3.0.2",
-    "mocha": "^4.0.1",
+    "nyc": "^13.1.0",
     "uglifyjs-webpack-plugin": "^1.2.7",
     "webpack": "^4.12.2",
     "webpack-cli": "^3.0.8",
-    "yargs": "^10.0.3",
-    "nyc": "^13.1.0"
+    "webpack-dev-server": "^3.4.1",
+    "yargs": "^10.0.3"
   },
   "nyc": {
     "sourceMap": false,
     "instrument": false
-  }
+  },
+  "dependencies": {}
 }
